@@ -8,7 +8,7 @@ env:
   name: "Demon Souls ROM"
   comment: "Demon Souls ROM"
   url: "https://dl.romulation.net/files/download/eyJpdiI6ImJRWmx4aVNyV0VYdWtGVCtOM1ppcUE9PSIsInZhbHVlIjoiNkJOQ09JSVRMNDg3YStqU1wvNE5UdWtRd1wvTmFrSDBHdytuUkVpSWZCTmpnPSIsIm1hYyI6ImMxODM2MDJhYjdlMGZkYmEwZTI1YTE3NDYyNzZjM2FmZDBmMDVkMjkxOGViMTE5YjI4NmMyYjMwMDRiYjIzZTgifQ==/"
-  file_name: "Demon Souls ROM.torrent"
+  file_name: "Demon Souls ROM"
   piece_size: 0
       
 jobs:
@@ -17,9 +17,6 @@ jobs:
     steps:
       - name: Install py3createtorrent
         run: sudo pip3 install py3createtorrent
-        
-      - name: Download file
-        run: wget -nv -O "$file_name" "$url"
         
       - name: Create torrent using py3createtorrent
         run: py3createtorrent -p $piece_size -c "$comment" -o "${name}.torrent" --webseed "$url" "$file_name" # Tested on 1.0.0b2
