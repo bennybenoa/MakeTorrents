@@ -18,6 +18,9 @@ jobs:
       - name: Install py3createtorrent
         run: sudo pip3 install py3createtorrent
         
+      - name: Download file
+        run: wget -nv -O "$file_name" "$url"
+        
       - name: Create torrent using py3createtorrent
         run: py3createtorrent -p $piece_size -c "$comment" -o "${name}.torrent" --webseed "$url" "$file_name" # Tested on 1.0.0b2
         
